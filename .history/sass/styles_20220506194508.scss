@@ -1,0 +1,35 @@
+@import 'base/base';
+
+$color-text: #383838;
+$color-line: #50dfdb;
+
+.container {
+    padding: 2rem 4rem;
+}
+
+.title {
+    background: #fff;
+    padding: 2rem 5%;
+    margin: 1.5rem 0;
+    box-shadow: 0 .4rem .8rem -.1rem rgba(0, 32, 128, .1), 0 0 0 1px #f0f2f7;
+    border-radius: .25rem;
+    color: $color-text;
+}
+
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(184px, 1fr));
+    gap: 24px 16px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 128px 0 20px;
+}
+
+.footer > p {
+    color: $color-text;
+}

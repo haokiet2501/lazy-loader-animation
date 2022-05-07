@@ -1,0 +1,378 @@
+@import 'base/base';
+
+$color-text: #383838;
+
+.container {
+    padding: 2rem 4rem;
+}
+
+.title {
+    background: #fff;
+    padding: 2rem 5%;
+    margin: 1.5rem 0;
+    box-shadow: 0 .4rem .8rem -.1rem rgba(0, 32, 128, .1), 0 0 0 1px #f0f2f7;
+    border-radius: .25rem;
+    color: $color-text;
+    line-height: 24px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(184px, 1fr));
+    gap: 24px 16px;
+}
+
+.box {
+    position: relative;
+    height: 250px;
+    background: #fff;
+    padding: 2rem 5%;
+    margin: 1.5rem 0;
+    box-shadow: 0 .4rem .8rem -.1rem rgba(0, 32, 128, .1), 0 0 0 1px #f0f2f7;
+    border-radius: .25rem;
+    overflow: hidden;
+    z-index: 9;
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: -3rem;
+    left: 32px;
+    width: 150px;
+    height: 140%;
+    background: linear-gradient(145deg, #053F5C , #9FE7F5);
+    animation: animate 15s linear infinite;
+}
+
+.box::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #fff;
+    border-radius: .20rem;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.snippet {
+    position: relative;
+    z-index: 10;
+    top: -1.87rem;
+    left: -.55rem;
+    padding: 2px 5px;
+    text-align: center;
+    background-color: rgb(255, 25, 100);
+    width: 6rem;
+    font-size: .75rem;
+    color: #fff;
+    border-radius: .20rem 0 .20rem 0;
+}
+
+.snippet::before {
+    content: attr(data-title);
+}
+
+.dot {
+    position: relative;
+    z-index: 10;
+    top: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__elastic {
+        position: relative;
+        @include dot-variables();
+        animation: dotElastic 1s linear infinite; 
+    }
+
+    &__elastic::before, &__elastic::after {
+        @include dot-content();
+    }
+
+    &__elastic::before {
+        left: -15px;
+        @include dot-variables();
+        animation: dotElasticBefore 1s linear infinite;
+    }
+
+    &__elastic::after {
+        left: 15px;
+        @include dot-variables();
+        animation: dotElasticAfter 1s linear infinite;
+    }
+
+    @keyframes dotElasticBefore{
+        0% {
+            transform: scale(1, 1);
+        }
+        25% {
+            transform: scale(1, 1.5);
+        }
+        50% {
+            transform:  scale(1, 0.67);
+        }
+        75% {
+            transform:  scale(1, 1);
+        }
+        100% {
+            transform:  scale(1, 1);
+        }
+    }        
+
+    @keyframes dotElastic{
+        0% {
+            transform: scale(1, 1);
+        }
+        25% {
+            transform: scale(1, 1);
+        }
+        50% {
+            transform:  scale(1, 1.5);
+        }
+        75% {
+            transform:  scale(1, 1);
+        }
+        100% {
+            transform:  scale(1, 1);
+        }
+    }           
+    @keyframes dotElasticAfter{
+        0% {
+            transform: scale(1, 1);
+        }
+        25% {
+            transform: scale(1, 1);
+        }
+        50% {
+            transform:  scale(1, 0.67);
+        }
+        75% {
+            transform:  scale(1, 1.5);
+        }
+        100% {
+            transform:  scale(1, 1);
+        }
+    }         
+    
+    &__pulse {
+        position: relative;
+        left: -9999px;
+        @include dot-variables();
+        box-shadow: 9999px 0 0 -5px var(--color-circle);
+        animation: dotPulse 1.5s linear infinite;
+        animation-delay: .25s;
+    }
+
+    &__pulse::before, &__pulse::after {
+        @include dot-content();
+        @include dot-variables();
+    }
+
+    &__pulse::before {
+        box-shadow: 9984px 0 0 -5px var(--color-circle);
+        animation: dotPulseBefore 1.5s linear infinite;
+        animation-delay: 0s;
+    }
+
+    &__pulse::after {
+        box-shadow: 10014px 0 0 -5px var(--color-circle);
+        animation: dotPulseAfter 1.5s linear infinite;
+        animation-delay: .5s;
+    }
+
+    @keyframes dotPulseBefore {
+        0% {
+            box-shadow: 9984px 0 0 -5px var(--color-circle);
+        }
+        30% {
+            box-shadow: 9984px 0 0 2px var(--color-circle);
+        }
+        60%, 100% {
+            box-shadow: 9984px 0 0 -5px var(--color-circle);
+        }
+    }
+
+    @keyframes dotPulse {
+        0% {
+            box-shadow: 9999px 0 0 -5px var(--color-circle);
+        }
+        30% {
+            box-shadow: 9999px 0 0 2px var(--color-circle);
+        }
+        60%, 100% {
+            box-shadow: 9999px 0 0 -5px var(--color-circle);
+        }
+    }
+    @keyframes dotPulseAfter {
+        0% {
+            box-shadow: 10014px 0 0 -5px var(--color-circle);
+        }
+        30% {
+            box-shadow: 10014px 0 0 2px var(--color-circle);
+        }
+        60%, 100% {
+            box-shadow: 10014px 0 0 -5px var(--color-circle);
+        }
+    }
+
+    &__cirle__fb {
+        position: relative;
+        top: -20px;
+        width: 50px;
+        height: 50px;
+        background: #151B46;
+        border-radius: 50%;
+    }
+
+    svg {
+        display: relative;
+        width: 50px;
+        height: 50px;
+        animation: spinner 2s linear infinite;
+    }
+
+    @keyframes spinner {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    circle {
+        width: 100%;
+        height: 100%;
+        fill: none;
+        stroke-width: 3;
+        stroke: #33A7D0;
+        stroke-linecap: round;
+        transform: translate(10px, 10px);
+        stroke-dasharray: 85;
+        stroke-dashoffset: 85;
+        background: #33A7D0;
+        animation: circle 4s linear infinite;
+        animation-delay: .25s;
+        transition: .4s ease-in-out;
+    }
+    
+    @keyframes circle {
+        0%, 100% {
+            stroke-dashoffset: 85;
+        }
+        50% {
+            stroke-dashoffset: 0;
+        }
+        50.1% {
+            stroke-dashoffset: 170;
+        }
+    }
+
+    &__flashing {
+        position: relative;
+        @include dot-variables();
+        animation: dotFlashing 1s linear alternate infinite;
+        animation-delay: .5s;
+    }
+
+    &__flashing::before, &__flashing::after {
+        @include dot-content();
+    }
+
+    &__flashing::before {
+        left: -15px;
+        @include dot-variables();
+        animation: dotFlashing 1s alternate infinite;
+        animation-delay: 0s;
+    }
+
+    &__flashing::after {
+        left: 15px;
+        @include dot-variables();
+        animation: dotFlashing 1s alternate infinite;
+        animation-delay: 1s;
+    }
+
+    @keyframes dotFlashing{
+        0% {
+            background: var(--color-circle);
+        }
+        50%, 100% {
+            background: #9FE7F5;
+        }
+    }
+
+    &__collision {
+        position: relative;
+        @include dot-variables();
+    }
+
+    &__collision::before, &__collision::after {
+        content: '';
+        position: absolute;
+        display: inline-block;
+        top: 0;
+    }
+
+    &__collision::before {
+        left: -10px;
+        @include dot-variables();
+        animation: dotCollisionBefore 2s ease-in infinite;
+    }
+
+    &__collision::after {
+        left: 10px;
+        @include dot-variables();
+        animation: dotCollisionAfter 2s ease-in infinite;
+        animation-delay: 1s;
+    }
+
+    @keyframes  dotCollisionBefore {
+        0%, 50%, 75%, 100% {
+            transform: translateX(0);
+        }
+        25% {
+            transform: translateX(-15px);
+        }
+    }
+
+    @keyframes  dotCollisionAfter {
+        0%, 50%, 75%, 100% {
+            transform: translateX(0);
+        }
+        25% {
+            transform: translateX(15px);
+        }
+    }
+
+    &__revolution {
+        position: relative;
+        @include dot-variables();
+    }
+
+    &__revolution::before, &__revolution::after {
+        top: 0;
+        left: -15px;
+        @
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 128px 0 20px;
+}
+
+.footer > p {
+    color: $color-text;
+}
